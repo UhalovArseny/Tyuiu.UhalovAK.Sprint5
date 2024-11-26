@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using tyuiu.cources.programming.interfaces.Sprint5;
+using Tyuiu.UhalovAK.Sprint5.Task0.V28.Lib;
 namespace Tyuiu.UhalovAK.Sprint5.Task0.V28.Test
 {
     [TestClass]
