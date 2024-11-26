@@ -11,11 +11,11 @@ namespace Tyuiu.UhalovAK.Sprint5.Task0.V28.Lib
             string path = $@"{Directory.GetCurrentDirectory()}\OutputFileTask0.txt";
 
             double z = x * (Math.Sqrt(x+3));
-            z = Math.Round(z, 2);
+            z = Math.Round(z, 3);
 
             File.WriteAllText(path, Convert.ToString(z));
             return path;
         }
     }
 }
-///(Math.Pow((x + 3), (1 / 2)))
+
