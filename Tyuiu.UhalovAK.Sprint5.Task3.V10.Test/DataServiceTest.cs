@@ -1,6 +1,4 @@
-using System.Diagnostics;
-using System.IO;
-namespace Tyuiu.UhalovAK.Sprint5.Task2.V5.Test
+namespace Tyuiu.UhalovAK.Sprint5.Task3.V10.Test
 {
     [TestClass]
     public class DataServiceTest
@@ -8,7 +6,7 @@ namespace Tyuiu.UhalovAK.Sprint5.Task2.V5.Test
         [TestMethod]
         public void ChekcedExistsFile()
         {
-            string path = @"C:\Users\akukh\AppData\Local\Temp\OutPutFileTask2.csv";
+            string path = @"C:\Users\akukh\AppData\Local\Temp\OutPutFileTask2.bin";
 
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
