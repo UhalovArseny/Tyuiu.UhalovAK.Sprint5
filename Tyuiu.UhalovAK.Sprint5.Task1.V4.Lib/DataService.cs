@@ -18,13 +18,14 @@ namespace Tyuiu.UhalovAK.Sprint5.Task1.V4.Lib
             string strRes;
             for (int x = startValue; x <= stopValue; x++)
             {
-                res = Math.Round(((((Math.Cos(x)) / ( 1 + x)) - Math.Cos(x))*1.3+ (3*x)),2);
+                res = Math.Round((((Math.Cos(x)) / ( 1 + x)) - Math.Cos(x)*1.3+ (3*x)),2);
                 strRes = Convert.ToString(res);
 
-                if (Math.Cos(x) == 0)
+                if (x == -1)
                 {
-
-                    File.AppendAllText(path, "0");
+                    
+                    res = 0;
+                    strRes = Convert.ToString(res);
                 }
                
 
