@@ -15,7 +15,7 @@ namespace Tyuiu.UhalovAK.Sprint5.Task5.V30.Lib
                 string[] numberStrings = content.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 double[] numbers = Array.ConvertAll(numberStrings, double.Parse);
 
-                double maxPrime = double.MinValue; // Инициализируем минимальным значением double
+                double maxPrime = 0; // Инициализируем минимальным значением double
 
                 for (int i = 0; i < numbers.Length; i++)
                 {
@@ -34,7 +34,7 @@ namespace Tyuiu.UhalovAK.Sprint5.Task5.V30.Lib
                 }
 
                 // Если maxPrime остался равным минимальному значению, значит простых чисел не было
-                return maxPrime == double.MinValue ? 0 : maxPrime; // Возвращаем 0, если не найдено простых чисел
+                return maxPrime; // Возвращаем 0, если не найдено простых чисел
             }
         }
 
