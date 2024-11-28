@@ -1,51 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
+
 namespace Tyuiu.UhalovAK.Sprint5.Task5.V30.Lib
 {
     public class DataService : ISprint5Task5V30
     {
         public double LoadFromDataFile(string path)
         {
-            int maxPrime = int.MinValue;
-
             using (StreamReader reader = new StreamReader(path))
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                string content = File.ReadAllText(path);
+                content = content.Replace('.', ',');
+                string[] numberStrings = content.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                double[] numbers = Array.ConvertAll(numberStrings, double.Parse);
+
+                double maxPrime = double.MinValue; // Инициализируем минимальным значением double
+
+                for (int i = 0; i < numbers.Length; i++)
                 {
-                    int number;
-                    if (int.TryParse(line, out number) && IsPrime(number))
+                    if (numbers[i] % 1 == 0)
                     {
-                        if (number > maxPrime)
+                        int integerPart = (int)Math.Floor(numbers[i]);
+                        if (IsPrime(integerPart)) // Проверяем, является ли целая часть простым числом
                         {
-                            maxPrime = number;
+                            if (numbers[i] > maxPrime) // Сравниваем с текущим максимумом
+                            {
+                                maxPrime = numbers[i];
+                            }
                         }
                     }
+                    
                 }
-            }
 
-            return maxPrime;
+                // Если maxPrime остался равным минимальному значению, значит простых чисел не было
+                return maxPrime == double.MinValue ? 0 : maxPrime; // Возвращаем 0, если не найдено простых чисел
+            }
         }
 
-        private bool IsPrime(int number)
+        private bool IsPrime(int num)
         {
-            if (number <= 1)
+            // Числа меньше 2 не являются простыми
+            if (num < 2) return false;
+
+            // Проверяем делимость только до квадратного корня из num
+            for (int i = 2; i * i <= num; i++)
             {
-                return false;
-            }
-            for (int i = 2; i * i <= number; i++)
-            {
-                if (number % i == 0)
+                if (num % i == 0)
                 {
-                    return false;
+                    return false; // Найден делитель, число не простое
                 }
             }
-            return true;
+
+            return true; // Если делителей не найдено, число простое
         }
     }
 }
