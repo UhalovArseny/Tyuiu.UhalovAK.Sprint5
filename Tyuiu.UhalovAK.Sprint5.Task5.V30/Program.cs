@@ -12,8 +12,8 @@ namespace Tyuiu.UhalovAK.Sprint5.Task5.V30
             Console.WriteLine("****************************************************************************");
             Console.WriteLine("* Спринт #5                                                                *");
             Console.WriteLine("* Тема: Массивы                                                            *");
-            Console.WriteLine("* Задание #4                                                               *");
-            Console.WriteLine("* Вариант #5                                                               *");
+            Console.WriteLine("* Задание #5                                                               *");
+            Console.WriteLine("* Вариант #30                                                               *");
             Console.WriteLine("* Выполнил: Ухалов Арсений Константинович | АСОиУБ-24-1                    *");
             Console.WriteLine("****************************************************************************");
 
@@ -21,7 +21,7 @@ namespace Tyuiu.UhalovAK.Sprint5.Task5.V30
             Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                         *");
             Console.WriteLine("****************************************************************************");
 
-            string path = @"C:\DataSprint5\InPutDataFileTask5V30.txt ";
+            string path = $@"{Directory.GetCurrentDirectory()}\InPutDataFileTask5V30.txt";
             Console.WriteLine("Данные находятся в файле:  " + path);
 
 
