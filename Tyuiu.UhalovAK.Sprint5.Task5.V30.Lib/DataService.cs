@@ -1,32 +1,48 @@
 ﻿using tyuiu.cources.programming.interfaces.Sprint5;
 
 using System.IO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Tyuiu.UhalovAK.Sprint5.Task5.V30.Lib
 {
     public class DataService : ISprint5Task5V30
     {
         public double LoadFromDataFile(string path)
         {
-            
+            int maxPrime = int.MinValue;
+
             using (StreamReader reader = new StreamReader(path))
             {
-                string content = File.ReadAllText(path);
-                content = content.Replace('.', ',');
-                string[] numberStrings = content.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                double[] numbers = Array.ConvertAll(numberStrings, double.Parse);
-
-                double max = 0;
-                for (int i = 0; i < numbers.Length;  i++)
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    if (numbers[i] > max)
+                    int number;
+                    if (int.TryParse(line, out number) && IsPrime(number))
                     {
-                        max = numbers[i];
+                        if (number > maxPrime)
+                        {
+                            maxPrime = number;
+                        }
                     }
                 }
-                return max;
-
             }
 
+            return maxPrime;
+        }
+
+        private bool IsPrime(int number)
+        {
+            if (number <= 1)
+            {
+                return false;
+            }
+            for (int i = 2; i * i <= number; i++)
+            {
+                if (number % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
